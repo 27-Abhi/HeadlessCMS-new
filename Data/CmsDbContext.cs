@@ -11,10 +11,10 @@ namespace HeadlessCMS.Data
         {
                 
         }
-        public DbSet<website> website { get; set; }
-        public DbSet<Content> content  { get; set; }
-        public DbSet<page> page { get; set; }
-        public DbSet<components> components { get; set; }
+        public DbSet<Website> Website { get; set; }
+        public DbSet<Content> Content  { get; set; }
+        public DbSet<Page> Page { get; set; }
+        public DbSet<Components> Components { get; set; }
 
     }
 }

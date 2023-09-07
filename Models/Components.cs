@@ -1,6 +1,6 @@
 ﻿    namespace HeadlessCMS.Models
 {
-    public class components
+    public class Components
     {
         public int id { get; set; }
         public int pageId { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace HeadlessCMS.Models
 {
-    public class page
+    public class Page
     {
         public int id { get; set; }
         public string name { get; set; }
