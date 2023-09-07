@@ -1,6 +1,6 @@
 ﻿namespace HeadlessCMS.Service
 {
-    public class ComponentsService
+    public class ComponentsService : IComponentsService
     {
     }
 }

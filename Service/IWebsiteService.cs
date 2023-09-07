@@ -1,9 +1,10 @@
-﻿namespace HeadlessCMS.Service
+﻿using HeadlessCMS.Models;
+
+namespace HeadlessCMS.Service
 {
-    public interface ICmsService
+    public interface IWebsiteService
     {
-
-
+        Task<IEnumerable<Website>> ListWebsites();
 
     }
 }

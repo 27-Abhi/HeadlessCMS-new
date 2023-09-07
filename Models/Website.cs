@@ -1,6 +1,6 @@
 ﻿namespace HeadlessCMS.Models
 {
-    public class website
+    public class Website
     {
         public string url { get; set; }
         public string name { get; set; }
