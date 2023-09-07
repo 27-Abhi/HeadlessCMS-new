@@ -1,4 +1,5 @@
 ﻿using HeadlessCMS.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HeadlessCMS.Service
 {
@@ -12,6 +13,11 @@ namespace HeadlessCMS.Service
         public async Task<IEnumerable<Website>> ListWebsites()
         {
             return await _iWebsiteRepository.ListWebsites();
+        }
+        
+        public async Task<IActionResult> CreateWebsite(Website website)
+        {
+            return await _iWebsiteRepository.CreateWebsite(website);
         }
     }
 }

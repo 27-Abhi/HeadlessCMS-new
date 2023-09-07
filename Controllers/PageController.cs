@@ -7,7 +7,7 @@ namespace HeadlessCMS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CmsController:ControllerBase
+    public class PageController:ControllerBase
     {
         //private readonly CmsDbContext _context;
         private readonly IWebsiteService _iWebsiteService;
@@ -23,7 +23,7 @@ namespace HeadlessCMS.Controllers
         //    //_iComponentsService = iComponentsService;
         //    //_iContentService = iContentService;
         //}
-        public CmsController(IWebsiteService iWebsiteService)
+        public PageController(IWebsiteService iWebsiteService)
         {
             _iWebsiteService = iWebsiteService;
         }
@@ -33,6 +33,15 @@ namespace HeadlessCMS.Controllers
         {
             var allWebsites = await _iWebsiteService.ListWebsites();
             return allWebsites;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Website website)
+        {
+            await _iWebsiteService.CreateWebsite(website);
+
+            return CreatedAtAction(null, new { id = website.id }, website);
+            //return Ok(201);
         }
     }
 }

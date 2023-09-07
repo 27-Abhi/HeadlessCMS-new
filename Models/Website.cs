@@ -2,10 +2,10 @@
 {
     public class Website
     {
-        public string url { get; set; }
-        public string name { get; set; }
+        public string URL { get; set; }
+        public string Name { get; set; }
 
-        public DateTime created { get; set; }
+        public string CreatedOn { get; set; }
 
         public int id { get; set; }
 

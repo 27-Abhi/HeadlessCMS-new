@@ -1,5 +1,6 @@
 ﻿using HeadlessCMS.Data;
 using HeadlessCMS.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace HeadlessCMS.Service
@@ -12,9 +13,18 @@ namespace HeadlessCMS.Service
         {
             _context = context;
         }
+
+
         public async Task<IEnumerable<Website>> ListWebsites()
         {
             return await _context.Website.ToListAsync();
+        }
+
+        public async Task<IActionResult> CreateWebsite(Website website)
+        {
+            await _context.Website.AddAsync(website);
+            await _context.SaveChangesAsync();
+            return null;
         }
     }
 }
