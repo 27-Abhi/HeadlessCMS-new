@@ -1,4 +1,7 @@
-﻿namespace HeadlessCMS.Service
+﻿using HeadlessCMS.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace HeadlessCMS.Service
 {
     public class ComponentsService : IComponentsService
     {

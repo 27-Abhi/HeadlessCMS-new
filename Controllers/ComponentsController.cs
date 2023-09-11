@@ -10,9 +10,9 @@ namespace HeadlessCMS.Controllers
     public class ComponentsController:ControllerBase
     {
         //private readonly CmsDbContext _context;
-        private readonly IWebsiteService _iWebsiteService;
+        //private readonly IWebsiteService _iWebsiteService;
         //private readonly IPageService _iPageService;
-        //private readonly IComponentsService _iComponentsService;
+        private readonly IComponentsService _iComponentsService;
         //private readonly IContentService _iContentService;
 
         //public CmsController(CmsDbContext context, IWebsiteService iWebsiteService, IPageService iPageService, IComponentsService iComponentsService, IContentService iContentService)
@@ -23,24 +23,24 @@ namespace HeadlessCMS.Controllers
         //    //_iComponentsService = iComponentsService;
         //    //_iContentService = iContentService;
         //}
-        public ComponentsController(IWebsiteService iWebsiteService)
+        public ComponentsController(IComponentsService iComponentsService)
         {
-            _iWebsiteService = iWebsiteService;
+            _iComponentsService = iComponentsService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Website>> Get()
+        public async Task<IEnumerable<Components>> Get()
         {
-            var allWebsites = await _iWebsiteService.ListWebsites();
-            return allWebsites;
+            var allComponents = await _iComponentsService.ListComponents();
+            return null;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Website website)
+        public async Task<IActionResult> Create(Components components)
         {
-            await _iWebsiteService.CreateWebsite(website);
+            await _iComponentsService.CreateComponents(components);
 
-            return CreatedAtAction(null, new { id = website.id }, website);
+            return CreatedAtAction(null, new { id = components.id }, components);
             //return Ok(201);
         }
        

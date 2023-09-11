@@ -10,8 +10,8 @@ namespace HeadlessCMS.Controllers
     public class PageController:ControllerBase
     {
         //private readonly CmsDbContext _context;
-        private readonly IWebsiteService _iWebsiteService;
-        //private readonly IPageService _iPageService;
+        //private readonly IWebsiteService _iWebsiteService;
+        private readonly IPageService _iPageService;
         //private readonly IComponentsService _iComponentsService;
         //private readonly IContentService _iContentService;
 
@@ -23,24 +23,24 @@ namespace HeadlessCMS.Controllers
         //    //_iComponentsService = iComponentsService;
         //    //_iContentService = iContentService;
         //}
-        public PageController(IWebsiteService iWebsiteService)
+        public PageController(IPageService iPageService)
         {
-            _iWebsiteService = iWebsiteService;
+            _iPageService = iPageService;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Website>> Get()
         {
-            var allWebsites = await _iWebsiteService.ListWebsites();
-            return allWebsites;
+            var allPages = await _iPageService.ListPages();
+            return null;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Website website)
+        public async Task<IActionResult> Create(Page page)
         {
-            await _iWebsiteService.CreateWebsite(website);
+            await _iPageService.CreatePage(page);
 
-            return CreatedAtAction(null, new { id = website.id }, website);
+            return CreatedAtAction(null, new { id = page.id }, page);
             //return Ok(201);
         }
 
