@@ -26,5 +26,36 @@ namespace HeadlessCMS.Service
             await _context.SaveChangesAsync();
             return null;
         }
+
+        public async Task<IActionResult> UpdateWebsite(Website website, int id)
+        {
+            bool isDuplicateTitle = await _context.Website.AnyAsync(a => a.URL == website.URL && a.id != website.id);
+
+            if (isDuplicateTitle)
+            {
+                throw new InvalidOperationException("A website with the same URL already exists.");
+            }
+
+            _context.Entry(website).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return null;
+        }
+
+        public async Task<bool> DeleteWebsite(int id)
+        {
+            var websiteToDelete = await _context.Website.FindAsync(id);
+            if (websiteToDelete == null)
+                return false;
+
+            _context.Website.Remove(websiteToDelete);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<Website> GetWebsiteById(int id)
+        {
+            return await _context.Website.FindAsync(id);
+            //return true;
+        }
     }
 }

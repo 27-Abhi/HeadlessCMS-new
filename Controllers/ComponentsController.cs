@@ -43,5 +43,23 @@ namespace HeadlessCMS.Controllers
             return CreatedAtAction(null, new { id = website.id }, website);
             //return Ok(201);
         }
+       
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Components components, int id)
+        {
+            if (id != components.id)
+                return BadRequest();
+
+            await _iComponentsService.UpdateComponents(components, id);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<bool> Delete(int id)
+        {
+            await _iComponentsService.DeleteComponents(id);
+            return true;
+        }
     }
 }

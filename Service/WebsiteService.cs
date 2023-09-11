@@ -19,5 +19,20 @@ namespace HeadlessCMS.Service
         {
             return await _iWebsiteRepository.CreateWebsite(website);
         }
+
+        public async Task<IActionResult> UpdateWebsite(Website website, int id)
+        {
+            return await _iWebsiteRepository.UpdateWebsite(website, id);
+        }
+
+        public async Task<bool> DeleteWebsite(int id)
+        {
+            return await _iWebsiteRepository.DeleteWebsite(id);
+        }
+
+        public async Task<Website> GetWebsiteById(int id)
+        {
+            return await _iWebsiteRepository.GetWebsiteById(id);
+        }
     }
 }
