@@ -5,7 +5,9 @@ namespace HeadlessCMS.Service
 {
     public interface IContentService
     {
-        Task<IEnumerable<Content>> CreateContent();
-        Task<IActionResult> ListContent();
+        Task<IActionResult> UpdateContent(Content content, int id);
+        Task<bool> DeleteContent(int id);
+        Task<IEnumerable<Content>> ListContent();
+        Task<IActionResult> CreateContents(Content content);
     }
 }

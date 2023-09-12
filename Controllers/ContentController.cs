@@ -21,7 +21,7 @@ namespace HeadlessCMS.Controllers
         //    _iWebsiteService = iWebsiteService;
         //    //_iPageService = iPageService;
         //    //_iComponentsService = iComponentsService;
-        //    _iContentService = iContentService;
+        //    //_iContentService = iContentService;
         //}
         public ContentController(IContentService iContentService)
         {
@@ -32,17 +32,34 @@ namespace HeadlessCMS.Controllers
         public async Task<IEnumerable<Content>> Get()
         {
             var allContent = await _iContentService.ListContent();
-            return null;
+            return allContent;
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(Content content)
         {
-            await _iContentService.CreateContent();
+            await _iContentService.CreateContents(content);
 
             return CreatedAtAction(null, new { id = content.Id }, content);
             //return Ok(201);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Content content, int Id)
+        {
+            if (Id != content.Id)
+                return BadRequest();
+
+            await _iContentService.UpdateContent(content, Id);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<bool> Delete(int Id)
+        {
+            await _iContentService.DeleteContent(Id);
+            return true;
+        }
     }
 }
