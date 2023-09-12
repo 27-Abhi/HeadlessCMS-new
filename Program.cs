@@ -11,6 +11,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Add(ServiceDescriptor.Transient<IWebsiteService, WebsiteService>());//to activate
 builder.Services.Add(ServiceDescriptor.Transient<IWebsiteRepository, WebsiteRepository>());//to activate
 
+builder.Services.Add(ServiceDescriptor.Transient<IContentService, ContentService>());//to activate
+builder.Services.Add(ServiceDescriptor.Transient<IContentRepository, ContentRepository>());//to activate
+
+builder.Services.Add(ServiceDescriptor.Transient<IComponentsService, ComponentsService>());//to activate
+builder.Services.Add(ServiceDescriptor.Transient<IComponentsRepository, ComponentsRepository>());//to activate
+
+builder.Services.Add(ServiceDescriptor.Transient<IPageService, PageService>());//to activate
+builder.Services.Add(ServiceDescriptor.Transient<IPageRepository, PageRepository>());//to activate
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

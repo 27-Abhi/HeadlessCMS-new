@@ -40,14 +40,14 @@ namespace HeadlessCMS.Controllers
         {
             await _iContentService.CreateContents(content);
 
-            return CreatedAtAction(null, new { id = content.Id }, content);
+            return CreatedAtAction(null, new { id = content.id }, content);
             //return Ok(201);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Content content, int Id)
         {
-            if (Id != content.Id)
+            if (Id != content.id)
                 return BadRequest();
 
             await _iContentService.UpdateContent(content, Id);

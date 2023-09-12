@@ -2,20 +2,20 @@
 {
     public class Content
     {
-        public int Id { get; set; }
-        public int pahId { get; set; }
-        public string componentName { get; set; }
+        public int id { get; set; }
+        public string Text { get; set; }
+        public int Component_id { get; set; }
 
-        public string mediaJSON { get; set; }
+        public Media mediaJSON { get; set; }
 
-        public string title { get; set; }
-        //public class Media
-        //{
-        //    public string Imageurl { get; set; }
-        //    public string AltText { get; set; }
-        //    public string VideoUrl { get; set; }
+        public string Title { get; set; }
+        public class Media
+        {
+            public string Imageurl { get; set; }
+            public string AltText { get; set; }
+            public string VideoUrl { get; set; }
 
-        //}
+        }
     }
 }
         
