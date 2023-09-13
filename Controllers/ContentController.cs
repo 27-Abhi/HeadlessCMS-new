@@ -61,5 +61,14 @@ namespace HeadlessCMS.Controllers
             await _iContentService.DeleteContent(Id);
             return true;
         }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetContentById(int id)
+        {
+            //var issue = await _context.Issues.FindAsync(id);
+            var web = await _iContentService.GetContentById(id);
+
+            return web == null ? NotFound() : Ok(web);
+        }
     }
 }

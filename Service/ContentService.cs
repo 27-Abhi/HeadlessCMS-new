@@ -27,7 +27,12 @@ namespace HeadlessCMS.Service
 
         public async Task<IActionResult> UpdateContent(Content content, int id)
         {
-            return await _iContentRepository.UpdateContent(content, id);
+            return await _iContentRepository.UpdateContent(content,id);
+        }
+
+        public async Task<Content> GetContentById(int id)
+        {
+            return await _iContentRepository.GetContentById(id);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using HeadlessCMS.Models;
+using Newtonsoft.Json;
 using static HeadlessCMS.Models.Content;
 
 namespace HeadlessCMS.Data
@@ -19,16 +20,16 @@ namespace HeadlessCMS.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Define primary keys for entities (if needed)
-            modelBuilder.Entity<Website>().HasKey(w => w.id);
-            modelBuilder.Entity<Content>().HasKey(c => c.id);
-            modelBuilder.Entity<Page>().HasKey(p => p.id);
+            modelBuilder.Entity<Content>(e =>
+            {
 
-            modelBuilder.Entity<Content>()
-                .OwnsOne(c => c.mediaJSON);
-
-
-
+                e.Property(p => p.MediaJSON)
+                    .HasColumnType("json")
+                    .HasConversion(
+                        v => JsonConvert.SerializeObject(v),
+                        v => JsonConvert.DeserializeObject<Media>(v)
+                    );
+            });
         }
     }
 }

@@ -10,6 +10,7 @@ namespace HeadlessCMS.Service
         Task<bool> DeleteContent(int id);
         Task<IEnumerable<Content>> ListContent();
         Task<IActionResult> CreateContents(Content content);
+        Task<Content> GetContentById(int id);
 
 
     }

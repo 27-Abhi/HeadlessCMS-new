@@ -51,6 +51,12 @@ namespace HeadlessCMS.Service
             return null;
         }
 
+        public async Task<Content> GetContentById(int id)
+        {
+            return await _context.Content.FindAsync(id);
+            //return true;
+        }
+
     }
 }
 

@@ -2,6 +2,7 @@
 using HeadlessCMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HeadlessCMS.Migrations
 {
     [DbContext(typeof(CmsDbContext))]
-    partial class CmsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230912063134_trying")]
+    partial class trying
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,10 +54,6 @@ namespace HeadlessCMS.Migrations
 
                     b.Property<int>("Component_id")
                         .HasColumnType("integer");
-
-                    b.Property<string>("MediaJSON")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("Text")
                         .IsRequired()
@@ -120,6 +119,37 @@ namespace HeadlessCMS.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Website");
+                });
+
+            modelBuilder.Entity("HeadlessCMS.Models.Content", b =>
+                {
+                    b.OwnsOne("HeadlessCMS.Models.Content+Media", "MediaJSON", b1 =>
+                        {
+                            b1.Property<int>("Contentid")
+                                .HasColumnType("integer");
+
+                            b1.Property<string>("AltText")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("Imageurl")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("VideoUrl")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.HasKey("Contentid");
+
+                            b1.ToTable("Content");
+
+                            b1.WithOwner()
+                                .HasForeignKey("Contentid");
+                        });
+
+                    b.Navigation("MediaJSON")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
