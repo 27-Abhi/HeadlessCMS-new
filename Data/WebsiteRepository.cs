@@ -57,6 +57,15 @@ namespace HeadlessCMS.Service
             return await _context.Website.FindAsync(id);
             //return true;
         }
+
+        public async Task<List<Page>> GetPagesByWebsiteId(int id)
+        {
+            List<Page> pages = await _context.Page
+                           .Where(c => c.websiteID == id)
+                           .ToListAsync();
+
+            return pages;
+        }
     }
 
 }

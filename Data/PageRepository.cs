@@ -51,7 +51,13 @@ namespace HeadlessCMS.Service
             return null;
         }
 
-        public async Task<List<Components>> GetComponentsByPage(int id)
+        public async Task<Page> GetPageById(int id)
+        {
+            return await _context.Page.FindAsync(id);
+
+        }
+
+        public async Task<List<Components>> GetComponentsByPageId(int id)
         {
             List<Components> components = await _context.Components
                 .Where(c => c.pageId == id)

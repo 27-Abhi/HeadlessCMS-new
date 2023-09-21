@@ -10,5 +10,7 @@ namespace HeadlessCMS.Service
         Task<IActionResult> CreateComponents(Components components);
         Task<IActionResult> UpdateComponents(Components components, int id);
         Task<bool> DeleteComponents(int id);
+        Task<Components> GetComponentsById(int id);
+        Task<List<Content>> GetContentByComponentId(int id);
     }
 }

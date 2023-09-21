@@ -71,5 +71,12 @@ namespace HeadlessCMS.Controllers
 
             return web == null ? NotFound() : Ok(web);
         }
+
+        [HttpGet("{id}/pages")]
+        public async Task<List<Page>> GetPagesByWebsiteId(int id)
+        {
+            var pages = await _iWebsiteService.GetPagesByWebsiteId(id);
+            return (List<Page>)pages;
+        }
     }
 }

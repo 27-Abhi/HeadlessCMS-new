@@ -39,9 +39,14 @@ namespace HeadlessCMS.Service
             return await _iPageRepository.DeletePage( id);
         }
 
-        public async Task<List<Components>> GetComponentsByPage(int id)
+        public async Task<Models.Page> GetPageById(int id)
         {
-            return await _iPageRepository.GetComponentsByPage(id);
+            return await _iPageRepository.GetPageById(id);
+        }
+
+        public async Task<List<Components>> GetComponentsByPageId(int id)
+        {
+            return await _iPageRepository.GetComponentsByPageId(id);
         }
     }
 }

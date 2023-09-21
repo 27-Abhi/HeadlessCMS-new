@@ -61,5 +61,19 @@ namespace HeadlessCMS.Controllers
             await _iComponentsService.DeleteComponents(id);
             return true;
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetComponentsById(int id)
+        {
+            var components = await _iComponentsService.GetComponentsById(id);
+            return components == null ? NotFound() : Ok(components);
+        }
+
+        [HttpGet("{id}/content")]
+        public async Task<List<Content>> GetContentByComponentId(int id)
+        {
+            var content = await _iComponentsService.GetContentByComponentId(id);
+            return content;
+        }
     }
 }

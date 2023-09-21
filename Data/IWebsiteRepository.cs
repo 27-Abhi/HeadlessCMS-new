@@ -11,5 +11,6 @@ namespace HeadlessCMS.Service
         Task<IActionResult> UpdateWebsite(Website website, int id);
         Task<bool> DeleteWebsite(int id);
         Task<Website> GetWebsiteById(int id);
+        Task<List<Page>> GetPagesByWebsiteId(int id);
     }
 }

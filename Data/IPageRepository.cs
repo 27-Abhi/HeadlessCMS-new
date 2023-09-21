@@ -11,7 +11,7 @@ namespace HeadlessCMS.Service
         public Task<IActionResult> CreatePages(Page page);
         Task<IActionResult> UpdatePage(Page page, int id);
         Task<bool> DeletePage(int id);
-
-        Task<List<Components>> GetComponentsByPage(int id);
+        Task<Page> GetPageById(int id);
+        Task<List<Components>> GetComponentsByPageId(int id);
     }
 }

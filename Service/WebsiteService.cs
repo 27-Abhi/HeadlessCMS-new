@@ -34,5 +34,9 @@ namespace HeadlessCMS.Service
         {
             return await _iWebsiteRepository.GetWebsiteById(id);
         }
+        public async Task<List<Page>> GetPagesByWebsiteId(int id)
+        {
+            return (List<Page>)await _iWebsiteRepository.GetPagesByWebsiteId(id);
+        }
     }
 }

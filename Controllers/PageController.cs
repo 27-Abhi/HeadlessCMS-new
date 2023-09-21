@@ -64,11 +64,20 @@ namespace HeadlessCMS.Controllers
             return true;
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPageById(int id)
+        {
+            //var issue = await _context.Issues.FindAsync(id);
+            var pg = await _iPageService.GetPageById(id);
+
+            return pg == null ? NotFound() : Ok(pg);
+        }
+
         [HttpGet("{id}/components")]
         public async Task<IActionResult> GetCompFromPage(int id)
         {
 
-            var com = await _iPageService.GetComponentsByPage(id);
+            var com = await _iPageService.GetComponentsByPageId(id);
 
             return com == null ? NotFound() : Ok(com);
 

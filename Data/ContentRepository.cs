@@ -57,14 +57,6 @@ namespace HeadlessCMS.Service
             //return true;
         }
 
-        public async Task<List<Content>> GetContentByComp(int id)
-        {
-            List<Content> contents = await _context.Content
-                .Where(c => c.Component_id== id)
-                .ToListAsync();
-
-            return contents;
-        }
 
     }
 }

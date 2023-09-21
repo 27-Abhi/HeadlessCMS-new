@@ -32,5 +32,14 @@ namespace HeadlessCMS.Service
         {
             return await _iComponentsRepository.DeleteComponents(id);
         }
+        public async Task<Components> GetComponentsById(int id)
+        {
+            return await _iComponentsRepository.GetComponentsById(id);
+        }
+
+        public async Task<List<Content>> GetContentByComponentId(int id)
+        {
+            return await _iComponentsRepository.GetContentByComponentId(id);
+        }
     }
 }

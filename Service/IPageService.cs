@@ -9,6 +9,7 @@ namespace HeadlessCMS.Service
         Task<IActionResult> CreatePage(Page page);
         Task<bool> UpdatePage(Page page, int id);
         Task<bool> DeletePage(int id);
-        Task<List<Components>> GetComponentsByPage(int id);
+        Task<Page> GetPageById(int id);
+        Task<List<Components>> GetComponentsByPageId(int id);
     }
 }

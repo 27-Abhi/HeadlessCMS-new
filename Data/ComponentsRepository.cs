@@ -51,5 +51,20 @@ namespace HeadlessCMS.Service
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<Components> GetComponentsById(int id)
+        {
+            var component = await _context.Components.FindAsync(id);
+            return component;
+        }
+
+        public async Task<List<Content>> GetContentByComponentId(int id)
+        {
+            List<Content> content = await _context.Content
+                           .Where(c => c.Component_id == id)
+                           .ToListAsync();
+
+            return content;
+        }
     }
 }

@@ -12,9 +12,5 @@ namespace HeadlessCMS.Service
         Task<IActionResult> CreateContents(Content content);
         Task<Content> GetContentById(int id);
 
-        Task<List<Content>> GetContentByComp(int id);
-  
-
-
     }
 }
