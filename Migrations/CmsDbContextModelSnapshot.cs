@@ -54,7 +54,7 @@ namespace HeadlessCMS.Migrations
 
                     b.Property<string>("MediaJSON")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("json");
 
                     b.Property<string>("Text")
                         .IsRequired()

@@ -22,14 +22,26 @@ namespace HeadlessCMS.Service
             return await _iPageRepository.ListPages();
         }
 
-        public async Task<IActionResult> UpdatePage(Models.Page page, int id)
+        public async Task<bool> UpdatePage(Models.Page page, int id)
         {
-            return await _iPageRepository.UpdatePage(page, id);
+            try
+            {
+                await _iPageRepository.UpdatePage(page, id);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
         public async Task<bool> DeletePage(int id)
         {
             return await _iPageRepository.DeletePage( id);
         }
 
+        public async Task<List<Components>> GetComponentsByPage(int id)
+        {
+            return await _iPageRepository.GetComponentsByPage(id);
+        }
     }
 }

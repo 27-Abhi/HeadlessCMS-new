@@ -2,6 +2,7 @@
 using HeadlessCMS.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 
 namespace HeadlessCMS.Service
 {
@@ -49,5 +50,14 @@ namespace HeadlessCMS.Service
             await _context.SaveChangesAsync();
             return null;
         }
-    }
+
+        public async Task<List<Components>> GetComponentsByPage(int id)
+        {
+            List<Components> components = await _context.Components
+                .Where(c => c.pageId == id)
+                .ToListAsync();
+
+            return components;
+        }
+    }   
 }

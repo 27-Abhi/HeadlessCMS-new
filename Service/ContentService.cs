@@ -34,5 +34,10 @@ namespace HeadlessCMS.Service
         {
             return await _iContentRepository.GetContentById(id);
         }
+
+        public async Task<List<Content>> GetContentByComp(int id)
+        {
+            return await _iContentRepository.GetContentByComp(id);
+        }
     }
 }

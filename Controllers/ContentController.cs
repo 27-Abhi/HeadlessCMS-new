@@ -70,5 +70,15 @@ namespace HeadlessCMS.Controllers
 
             return web == null ? NotFound() : Ok(web);
         }
+
+        [HttpGet("{id}/contents")]
+        public async Task<IActionResult> GetContentFromComp(int id)
+        {
+
+            var com = await _iContentService.GetContentByComp(id);
+
+            return com == null ? NotFound() : Ok(com);
+
+        }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using HeadlessCMS.Data;
 using HeadlessCMS.Models;
 using HeadlessCMS.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HeadlessCMS.Controllers
 {
+   // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PageController:ControllerBase
@@ -50,9 +52,9 @@ namespace HeadlessCMS.Controllers
             if (id != page.id)
                 return BadRequest();
 
-            await _iPageService.UpdatePage(page, id);
+            var response = await _iPageService.UpdatePage(page, id);
 
-            return NoContent();
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
@@ -61,5 +63,18 @@ namespace HeadlessCMS.Controllers
             await _iPageService.DeletePage(id);
             return true;
         }
+
+        [HttpGet("{id}/components")]
+        public async Task<IActionResult> GetCompFromPage(int id)
+        {
+
+            var com = await _iPageService.GetComponentsByPage(id);
+
+            return com == null ? NotFound() : Ok(com);
+
+        }
+
+
+
     }
 }

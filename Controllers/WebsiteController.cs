@@ -63,7 +63,7 @@ namespace HeadlessCMS.Controllers
             return true;
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetWebsiteById(int id)
         {
             //var issue = await _context.Issues.FindAsync(id);
