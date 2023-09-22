@@ -18,7 +18,7 @@ namespace HeadlessCMS.DTO
                 id = websiteDTO.id,
                 Name = websiteDTO.Name,
                 URL = websiteDTO.URL,
-                CreatedOn = DateTime.UtcNow.ToString(),
+              //  CreatedOn = DateTime.UtcNow.ToString(),
             };
             return response;
         }
@@ -32,7 +32,7 @@ namespace HeadlessCMS.DTO
                 id = website.id,
                 Name = website.Name,
                 URL = website.URL,
-                CreatedOn = website.CreatedOn,
+              //  CreatedOn = website.CreatedOn,
             };
             return response;
         }

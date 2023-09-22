@@ -7,7 +7,7 @@ namespace HeadlessCMS.Models
         public string URL { get; set; }
         public string Name { get; set; }
 
-        public string CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public int id { get; set; }
 
@@ -18,7 +18,7 @@ namespace HeadlessCMS.Models
                 id = websiteDTO.id,
                 Name = websiteDTO.Name,
                 URL = websiteDTO.URL,
-                CreatedOn = DateTime.UtcNow.ToString(),
+               // CreatedOn = DateTime.UtcNow.ToString(),
             };
             return response;
         }
@@ -32,7 +32,7 @@ namespace HeadlessCMS.Models
                 id = website.id,
                 Name = website.Name,
                 URL = website.URL,
-                CreatedOn = website.CreatedOn,
+               // CreatedOn = website.CreatedOn,
             };
             return response;
         }

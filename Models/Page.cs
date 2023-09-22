@@ -5,7 +5,7 @@
         public int id { get; set; }
         public string name { get; set; }
 
-        public string CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public int websiteID { get; set; } // foreign key
 
