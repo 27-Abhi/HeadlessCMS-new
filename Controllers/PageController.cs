@@ -31,10 +31,10 @@ namespace HeadlessCMS.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Website>> Get()
+        public async Task<IEnumerable<Page>> Get()
         {
             var allPages = await _iPageService.ListPages();
-            return null;
+            return allPages;
         }
 
         [HttpPost]

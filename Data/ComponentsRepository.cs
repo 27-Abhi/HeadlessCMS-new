@@ -29,12 +29,7 @@ namespace HeadlessCMS.Service
 
         public async Task<IActionResult> UpdateComponents(Components components, int id)
         {
-            bool isDuplicateTitle = await _context.Components.AnyAsync(a => a.id != components.id);
-
-            if (isDuplicateTitle)
-            {
-                throw new InvalidOperationException("A component with the same id already exists.");
-            }
+          //  bool isDuplicateTitle = await _context.Components.AnyAsync(a => a.id != components.id);
 
             _context.Entry(components).State = EntityState.Modified;
             await _context.SaveChangesAsync();

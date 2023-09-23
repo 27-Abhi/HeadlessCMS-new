@@ -1,6 +1,7 @@
 ﻿using HeadlessCMS.Data;
 using HeadlessCMS.Models;
 using HeadlessCMS.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HeadlessCMS.Controllers
@@ -32,7 +33,7 @@ namespace HeadlessCMS.Controllers
         public async Task<IEnumerable<Components>> Get()
         {
             var allComponents = await _iComponentsService.ListComponents();
-            return null;
+            return allComponents;
         }
 
         [HttpPost]

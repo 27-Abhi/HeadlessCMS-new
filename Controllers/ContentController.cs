@@ -1,11 +1,13 @@
 ﻿using HeadlessCMS.Data;
 using HeadlessCMS.Models;
 using HeadlessCMS.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HeadlessCMS.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class ContentController : ControllerBase
     {
@@ -45,20 +47,20 @@ namespace HeadlessCMS.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Content content, int Id)
+        public async Task<IActionResult> Update(Content content, int id)
         {
-            if (Id != content.id)
+            if (id != content.id)
                 return BadRequest();
 
-            await _iContentService.UpdateContent(content, Id);
+           var response= await _iContentService.UpdateContent(content, id);
 
-            return NoContent();
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
-        public async Task<bool> Delete(int Id)
+        public async Task<bool> Delete(int id)
         {
-            await _iContentService.DeleteContent(Id);
+            await _iContentService.DeleteContent(id);
             return true;
         }
 
